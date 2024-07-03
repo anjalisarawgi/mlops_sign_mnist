@@ -1,0 +1,2 @@
+from mlops_sign_mnist.models.model import MyNeuralNet
+from mlops_sign_mnist.predict_model import predict
