@@ -1,28 +1,33 @@
 import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
-class MyNeuralNet(torch.nn.Module):
-    """ Basic neural network class. 
-    
-    Args:
-        in_features: number of input features
-        out_features: number of output features
-    
-    """
-    def __init__(self, in_features: int, out_features: int) -> None:
-        super(MyNeuralNet, self).__init__()
+class SignLanguageMNISTModel(nn.Module):
+    def __init__(self):
+        super(SignLanguageMNISTModel, self).__init__()
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
+        self.conv3 = nn.Conv2d(64, 128, kernel_size=3, padding=1)
+        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.fc1 = nn.Linear(128 * 3 * 3, 256)  # Updated based on new computed size
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, 25)  # Assuming 25 classes for sign language letters A-Y
 
-        self.l1 = torch.nn.Linear(in_features, 500)
-        self.l2 = torch.nn.Linear(500, out_features)
-        self.r = torch.nn.ReLU()
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Forward pass of the model.
-        
-        Args:
-            x: input tensor expected to be of shape [N,in_features]
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = self.pool(F.relu(self.conv3(x)))
+        x = x.view(-1, 128 * 3 * 3)  # Updated based on new computed size
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
 
-        Returns:
-            Output tensor with shape [N,out_features]
+if __name__ == "__main__":
+    model = SignLanguageMNISTModel()
+    print(f"Model architecture: {model}")
+    print(f"Number of parameters: {sum(p.numel() for p in model.parameters())}")
 
-        """
-        return self.l2(self.r(self.l1(x)))
+    dummy_input = torch.randn(1, 1, 28, 28)
+    output = model(dummy_input)
+    print(f"Output shape: {output.shape}")
