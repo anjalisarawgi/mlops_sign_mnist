@@ -1,6 +1,6 @@
-pandas==2.0.3
-torch==2.3.1
+pandas
+torch
 kaggle
-subprocess
-zipfile
-os
+subprocess.run
+zipfile36
+psutil
