@@ -1,0 +1,6 @@
+DEBUG cookiecutter.config: User config not found. Loading default config.
+DEBUG cookiecutter.utils: Making sure path exists: /Users/anjalisarawgi/.cookiecutters/
+DEBUG cookiecutter.vcs: repo_dir is /Users/anjalisarawgi/.cookiecutters/mlops_template
+DEBUG cookiecutter.config: User config not found. Loading default config.
+DEBUG cookiecutter.utils: Making sure path exists: /Users/anjalisarawgi/.cookiecutters/
+DEBUG cookiecutter.vcs: repo_dir is /Users/anjalisarawgi/.cookiecutters/mlops_template

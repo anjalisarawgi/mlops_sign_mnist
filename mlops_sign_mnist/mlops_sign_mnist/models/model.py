@@ -2,8 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 class SignLanguageMNISTModel(nn.Module):
-    def __init__(self):
+    def __init__(self) -> None:
         super(SignLanguageMNISTModel, self).__init__()
         self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1)
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
@@ -13,7 +14,7 @@ class SignLanguageMNISTModel(nn.Module):
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 25)  # Assuming 25 classes for sign language letters A-Y
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.pool(F.relu(self.conv1(x)))
         x = self.pool(F.relu(self.conv2(x)))
         x = self.pool(F.relu(self.conv3(x)))
@@ -22,6 +23,7 @@ class SignLanguageMNISTModel(nn.Module):
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
         return x
+
 
 if __name__ == "__main__":
     model = SignLanguageMNISTModel()

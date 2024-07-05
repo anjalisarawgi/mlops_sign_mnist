@@ -1,24 +1,22 @@
 import torch
-from models.model import SignLanguageMNISTModel
 from torch.utils.data import DataLoader, TensorDataset
-import pandas as pd
-from sklearn.model_selection import train_test_split
+
+from models.model import SignLanguageMNISTModel
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 
 # load tensors
-X_test = torch.load("data/processed/X_test.pt")
-labels_test = torch.load("data/processed/labels_test.pt")
+X_test: torch.Tensor = torch.load("data/processed/X_test.pt")
+labels_test: torch.Tensor  = torch.load("data/processed/labels_test.pt")
 
 
-def evaluate(model_checkpoint) -> None:
+def predict(model_checkpoint : str) -> None:
     """Evaluate a trained model."""
     print("Evaluating like my life depends on it")
     print(model_checkpoint)
 
     model = SignLanguageMNISTModel().to(DEVICE)
     model.load_state_dict(torch.load(model_checkpoint))
-
 
     test_dataset = TensorDataset(X_test, labels_test)
     test_loader = DataLoader(test_dataset, batch_size=32)
@@ -35,5 +33,6 @@ def evaluate(model_checkpoint) -> None:
     accuracy = correct / total
     print(f"Test accuracy: {accuracy}")
 
+
 if __name__ == "__main__":
-    evaluate('models/sign_language_mnist_model.pth')
+    predict("models/sign_language_mnist_model.pth")

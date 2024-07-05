@@ -1,0 +1,18 @@
+program: mlops_sign_mnist/train_model.py
+name: sweepdemo
+project: sign_language_mnist
+entity: anjalisarawgi  # Your correct W&B username
+method: bayes
+metric:
+  goal: minimize
+  name: train_loss
+parameters:
+  lr:
+    distribution: log_uniform
+    min: 0.0001
+    max: 0.1
+  batch_size:
+    values: [16, 32, 64]
+  epochs:
+    values: [5, 10, 15]
+run_cap: 10

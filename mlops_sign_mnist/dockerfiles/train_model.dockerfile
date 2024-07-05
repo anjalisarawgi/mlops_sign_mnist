@@ -14,4 +14,6 @@ WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
 
+ENV WANDB_API_KEY=1b7ecebed8a240adafb51f6be5c3365569eda1fb
+
 ENTRYPOINT ["python", "-u", "mlops_sign_mnist/train_model.py"]
