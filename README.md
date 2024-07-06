@@ -52,31 +52,31 @@ curriculum in this course. Therefore, we do not expect at all that you have chec
 
 ### Week 1
 
-* [ ] Create a git repository
-* [ ] Make sure that all team members have write access to the GitHub repository
-* [ ] Create a dedicated environment for you project to keep track of your packages
-* [ ] Create the initial file structure using cookiecutter
-* [ ] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
-* [ ] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
-* [ ] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
-* [ ] Setup version control for your data or part of your data
-* [ ] Construct one or multiple docker files for your code
-* [ ] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
-* [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
+* [x] Create a git repository
+* [x] Make sure that all team members have write access to the GitHub repository
+* [x] Create a dedicated environment for you project to keep track of your packages
+* [x] Create the initial file structure using cookiecutter
+* [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
+* [x] Add a model file and a training script and get that running
+* [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [x] Remember to comply with good coding practices (`pep8`) while doing the project
+* [x] Do a bit of code typing and remember to document essential parts of your code
+* [x] Setup version control for your data or part of your data
+* [x] Construct one or multiple docker files for your code
+* [x] Build the docker files locally and make sure they work as intended
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
+* [x] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
 * [ ] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
 ### Week 2
 
-* [ ] Write unit tests related to the data part of your code
-* [ ] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
+* [x] Write unit tests related to the data part of your code
+* [x] Write unit tests related to model construction and or model training
+* [x] Calculate the coverage.
 * [ ] Get some continuous integration running on the GitHub repository
 * [ ] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [ ] Create a trigger workflow for automatically building your docker images
@@ -122,16 +122,21 @@ curriculum in this course. Therefore, we do not expect at all that you have chec
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
->
-> Recommended answer length: 100-200 words.
->
-> Example:
-> *We used the third-party framework ... in our project. We used functionality ... and functionality ... from the*
-> *package to do ... and ... in our project*.
->
-> Answer:
 
---- question 3 fill here ---
+Answer:
+
+1.    PyTorch: Provided tools for building and training our deep learning models, including nn.Module for defining neural network architecture and torch.optim for optimization algorithms.
+2.    Conda: Managed dependencies and environments.
+3.    Cookiecutter: Helped us set up our initial project structure quickly with best practices.
+4.	Hydra: Used for configuration management, to improve workflow and reproducibility.
+5.	WandB: Experiment tracking and visualization, crucial for monitoring training progress and hyperparameter tuning.
+6.	Docker: Ensured consistent environments across development, testing, and production by containerizing our application.
+7.	Pytest: Used for writing and running tests, ensuring code reliability and correctness.
+8.	GitHub Actions: Automated our CI/CD pipeline, running tests and deploying applications on code commits.
+9.    PEP8: Ensured our code adhered to Python’s style guidelines.
+10.	Cloud Services: Used cloud infrastructure for scalable and efficient model training and deployment.
+11.	FastAPI: Provided a way to build and deploy our API for model inference.
+
 
 ## Coding environment
 
