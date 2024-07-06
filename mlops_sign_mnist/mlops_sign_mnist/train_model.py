@@ -22,13 +22,14 @@ labels_train: torch.Tensor = torch.load("data/processed/labels_train.pt")
 X_train: torch.Tensor = torch.load("data/processed/X_train.pt")
 
 
-@click.group()
-def cli():
-    """Command line interface."""
-    pass
 
 
 """
+@click.group()
+def cli():
+    Command line interface.
+    pass
+
 @click.command()
 @click.option("--lr", default=1e-3, help="learning rate to use for training")
 @click.option("--batch_size", default=32, help="batch size to use for training")
@@ -38,9 +39,9 @@ def cli():
 
 @hydra.main(config_path="../configs", config_name="config.yaml")
 def main(cfg):
-    lr = cfg.hyperparameters.learning_rate
-    batch_size = cfg.hyperparameters.batch_size
-    epochs = cfg.hyperparameters.epochs
+    lr : float = cfg.hyperparameters.learning_rate
+    batch_size : int = cfg.hyperparameters.batch_size
+    epochs : int = cfg.hyperparameters.epochs
     wandb.init(project="sign_language_mnist",name="mlops_train_loss", config={"learning_rate": lr, "batch_size": batch_size, "epochs": epochs})
     print("Training Sign Language MNIST model")
     print(f"{lr=}, {batch_size=}, {epochs=}")
@@ -62,38 +63,39 @@ def main(cfg):
     #     on_trace_ready=tensorboard_trace_handler("./log/sign_language_mnist")) as prof:
     #     print("Profiler started")
     for epoch in range(epochs):
-            model.train()
-            train_loss = 0.0
-            for X_batch, y_batch in tqdm(train_loader, desc=f"Epoch {epoch+1}/{epochs}"):
-                X_batch, y_batch = X_batch.to(DEVICE), y_batch.to(DEVICE)
-                optimizer.zero_grad()
-                outputs = model(X_batch)
-                loss = criterion(outputs, y_batch)
-                loss.backward()
-                optimizer.step()
-                train_loss += loss.item()
-                # prof.step()  # Mark the end of an iteration
-            print("Iteration logged")
-            avg_train_loss = train_loss / len(train_loader)
-            train_losses.append(avg_train_loss)
-            wandb.log({"train_loss": avg_train_loss, "epoch": epoch + 1})
-            print(f"Epoch [{epoch+1}/{epochs}], Train Loss: {avg_train_loss:.4f}")
+        model.train()
+        train_loss = 0.0
+        for X_batch, y_batch in tqdm(train_loader, desc=f"Epoch {epoch+1}/{epochs}"):
+            X_batch, y_batch = X_batch.to(DEVICE), y_batch.to(DEVICE)
+            optimizer.zero_grad()
+            outputs = model(X_batch)
+            loss = criterion(outputs, y_batch)
+            loss.backward()
+            optimizer.step()
+            train_loss += loss.item()
+            # prof.step()  # Mark the end of an iteration
+        print("Iteration logged")
+        avg_train_loss = train_loss / len(train_loader)
+        train_losses.append(avg_train_loss)
+        wandb.log({"train_loss": avg_train_loss, "epoch": epoch + 1})
+        print(f"Epoch [{epoch+1}/{epochs}], Train Loss: {avg_train_loss:.4f}")
 
-    torch.save(model.state_dict(), "models/sign_language_mnist_model123.pth")
-    print("Model saved")
+        current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+        torch.save(model.state_dict(), f"models/sign_language_mnist_model_{current_time}.pth") # change this
+        print("Model saved")
         # wandb.save("models/sign_language_mnist_model.pth")
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(train_losses, label="Training Loss")
-    # plt.plot(val_losses, label="Validation Loss")
-    plt.xlabel("Epoch")
-    plt.ylabel("Loss")
-    plt.title("Training and Validation Loss")
-    plt.legend()
-    plt.grid(True)
-    plt.savefig("reports/figures/sign_language_training_loss123.png")
-    print("Loss plot saved")
-    wandb.log({"training_loss_plot": wandb.Image("reports/figures/sign_language_training_loss.png")})
+        plt.figure(figsize=(10, 6))
+        plt.plot(train_losses, label="Training Loss")
+        # plt.plot(val_losses, label="Validation Loss")
+        plt.xlabel("Epoch")
+        plt.ylabel("Loss")
+        plt.title("Training and Validation Loss")
+        plt.legend()
+        plt.grid(True)
+        plt.savefig("reports/figures/sign_language_training_loss123.png")
+        print("Loss plot saved")
+        wandb.log({"training_loss_plot": wandb.Image("reports/figures/sign_language_training_loss.png")})
 
     wandb.finish()
 # Print profiling results

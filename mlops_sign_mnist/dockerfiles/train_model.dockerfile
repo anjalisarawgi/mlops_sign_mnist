@@ -9,6 +9,9 @@ COPY requirements.txt requirements.txt
 COPY pyproject.toml pyproject.toml
 COPY mlops_sign_mnist/ mlops_sign_mnist/
 COPY data/ data/
+COPY configs/ configs/
+COPY models/ models/
+COPY reports/figures reports/figures/
 
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
