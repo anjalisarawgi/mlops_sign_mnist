@@ -20,7 +20,7 @@ jobs:
       run: pwd
 
     - name: List directory contents
-      run: ls -l
+      run: ls -l mlops_sign_mnist
         
     - name: Install dependencies
       run: |
