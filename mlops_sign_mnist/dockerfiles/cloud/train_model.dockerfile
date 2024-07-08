@@ -20,4 +20,9 @@ RUN pip install ./mlops_sign_mnist --no-deps --no-cache-dir
 
 ENV WANDB_API_KEY=1b7ecebed8a240adafb51f6be5c3365569eda1fb
 
+# not sure 
+ENV WANDB_MODE=online
+ENV HYDRA_FULL_ERROR=1
+
+
 ENTRYPOINT ["python", "-u", "mlops_sign_mnist/mlops_sign_mnist/train_model.py"]
