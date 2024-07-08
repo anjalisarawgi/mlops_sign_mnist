@@ -1,4 +1,7 @@
 [core]
-    remote = myremote
+    remote = remote_storage
 ['remote "myremote"']
     url = gdrive://11VmlyiuTD8PXMTC2vtR7gb5MkTX5oFj0
+['remote "remote_storage"']
+    url = gs://mlops-sign-mnist-bucket/
+    version_aware = true

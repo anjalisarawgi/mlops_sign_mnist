@@ -1,6 +1,95 @@
 outs:
-- md5: 6f570833d813e98a195c6ace8a1f7020.dir
-  size: 319728982
-  nfiles: 13
-  hash: md5
+- hash: md5
   path: data
+  files:
+  - relpath: processed/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
+    cloud:
+      remote_storage:
+        etag: 08ace7a2f8ab9787031001
+        version_id: '1720438254777260'
+  - relpath: processed/X_test.pt
+    md5: 166f6acea3f34907852d9fc0189bfdb0
+    size: 22492503
+    cloud:
+      remote_storage:
+        etag: 08c5faf8f9ab9787031001
+        version_id: '1720438258285893'
+  - relpath: processed/X_train.pt
+    md5: 2781c70ee40d411aa6a2707833333cde
+    size: 86100060
+    cloud:
+      remote_storage:
+        etag: 08c9f7aefcab9787031001
+        version_id: '1720438263364553'
+  - relpath: processed/labels_test.pt
+    md5: 8571eb7d9adb2489906e26f80f8fda55
+    size: 58544
+    cloud:
+      remote_storage:
+        etag: 08b7cea4f8ab9787031001
+        version_id: '1720438254806839'
+  - relpath: processed/labels_train.pt
+    md5: 942193e74eea218338ed56adef239ceb
+    size: 220789
+    cloud:
+      remote_storage:
+        etag: 08e6f4a6f8ab9787031001
+        version_id: '1720438254844518'
+  - relpath: raw/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
+    cloud:
+      remote_storage:
+        etag: 08f7caa0f8ab9787031001
+        version_id: '1720438254740855'
+  - relpath: raw/amer_sign2.png
+    md5: 30bb9d4f0294622098404d1c57ba7a69
+    size: 487452
+    cloud:
+      remote_storage:
+        etag: 08c680aef8ab9787031001
+        version_id: '1720438254960710'
+  - relpath: raw/amer_sign3.png
+    md5: eeb85da2d80424227cf0bc02b14fb2c4
+    size: 44527
+    cloud:
+      remote_storage:
+        etag: 08b7d1a6f8ab9787031001
+        version_id: '1720438254839991'
+  - relpath: raw/american_sign_language.PNG
+    md5: d312dae410fa2c97cc9c6a1725bef089
+    size: 208007
+    cloud:
+      remote_storage:
+        etag: 08aec9a6f8ab9787031001
+        version_id: '1720438254838958'
+  - relpath: raw/sign_mnist_test.csv
+    md5: b3fc96cb14b199c8efde4baddb1b03b8
+    size: 21777485
+    cloud:
+      remote_storage:
+        etag: 08b9c19af8ab9787031001
+        version_id: '1720438254641337'
+  - relpath: raw/sign_mnist_test/sign_mnist_test.csv
+    md5: b3fc96cb14b199c8efde4baddb1b03b8
+    size: 21777485
+    cloud:
+      remote_storage:
+        etag: 08fa87faf9ab9787031001
+        version_id: '1720438258303994'
+  - relpath: raw/sign_mnist_train.csv
+    md5: e42b5fb8f2be6bb2b35b0f696b598e7c
+    size: 83281065
+    cloud:
+      remote_storage:
+        etag: 08cdf2f7fbab9787031001
+        version_id: '1720438262462797'
+  - relpath: raw/sign_mnist_train/sign_mnist_train.csv
+    md5: e42b5fb8f2be6bb2b35b0f696b598e7c
+    size: 83281065
+    cloud:
+      remote_storage:
+        etag: 0895bda0fcab9787031001
+        version_id: '1720438263127701'

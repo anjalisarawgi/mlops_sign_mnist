@@ -1,0 +1,21 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Build container image'
+  args: [
+    'build',
+    '.',
+    '-t',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
+    '-f',
+    'mlops_sign_mnist/dockerfiles/cloud/train_model.dockerfile'
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Push container image'
+  args: [
+    'push',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
+  ]
+images:
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier"
+options:
+  logging: CLOUD_LOGGING_ONLY
