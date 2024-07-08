@@ -5,7 +5,7 @@ steps:
     'build',
     '.',
     '-t',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/train-model',
     '-f',
     'mlops_sign_mnist/dockerfiles/cloud/train_model.dockerfile'
   ]
@@ -13,9 +13,9 @@ steps:
   id: 'Push container image'
   args: [
     'push',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/train-model',
   ]
 images:
-  - "europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier"
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/train-model"
 options:
   logging: CLOUD_LOGGING_ONLY
