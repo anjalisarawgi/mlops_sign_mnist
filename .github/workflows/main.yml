@@ -6,10 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -21,11 +18,9 @@ jobs:
 
     - name: Print current working directory
       run: pwd
-      shell: cmd
 
     - name: List directory contents
       run: dir
-      shell: cmd
         
     - name: Install dependencies
       run: |
