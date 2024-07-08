@@ -1,6 +1,34 @@
-# mlops_sign_mnist
+# Sign Language MNIST Classification Using Convolutional Neural Networks
 
-A short description of the project.
+### Project Description
+The goal of our project is to use convolutional neural networks (CNNs) to accurately classify hand gestures from the Sign Language MNIST dataset. This dataset contains images of American Sign Language (ASL) letters, and our aim is to create a model that can recognize and classify these gestures with high accuracy.
+
+### Objective 
+Our primary objective is to develop a CNN model capable of classifying ASL hand gestures represented in the MNIST-like dataset. This project will involve data preprocessing, model training, evaluation, and optimization to achieve the highest possible classification accuracy.
+
+### Framework and Integration
+We utilize the PyTorch framework for constructing our deep neural network for predictions.
+
+### Data Colleciton and Initial Dataset 
+The dataset used in this project is sourced from Kaggle and is known as the Sign Language MNIST dataset. It consists of 28x28 pixel grayscale images of hand gestures corresponding to 24 ASL letters (excluding J and Z due to their dynamic nature).
+
+Dataset details:
+1. Training images: 27,455
+2. Testing images: 7,172
+
+### Model Architecture
+We will employ a Convolutional Neural Network (CNN) due to its effectiveness in image recognition tasks.
+
+Our models will be evaluated based on : Accuracy (The proportion of correctly classified images).
+
+
+### Team Members
+1. Anjali Sarawgi
+2. Ali Najibpour Nashi
+3. Annas Namouchi
+4. John-Pierre Weideman
+
+
 
 ## Project structure
 
