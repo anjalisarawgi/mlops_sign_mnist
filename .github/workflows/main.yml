@@ -20,7 +20,7 @@ jobs:
       run: pwd
 
     - name: List directory contents
-      run: dir
+      run: ls -l
         
     - name: Install dependencies
       run: |
