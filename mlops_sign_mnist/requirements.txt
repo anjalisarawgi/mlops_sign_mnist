@@ -6,3 +6,4 @@ torch
 wandb
 kaggle
 hydra-core
+pytest
