@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
+          cache: 'pip' # caching pip dependencies
+
       
       - name: Install dependencies
         working-directory: /home/runner/work/mlops_sign_mnist/mlops_sign_mnist/mlops_sign_mnist
