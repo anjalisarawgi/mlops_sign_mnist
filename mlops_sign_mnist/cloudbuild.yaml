@@ -7,7 +7,7 @@ steps:
     '-t',
     'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
     '-f',
-    'mlops_repo/dockerfiles/train_model.dockerfile'
+    'mlops_sign_mnist/dockerfiles/train_model.dockerfile'
   ]
 - name: 'gcr.io/cloud-builders/docker'
   id: 'Push container image'
