@@ -18,10 +18,12 @@ RUN pip install -r mlops_sign_mnist/requirements.txt --no-cache-dir
 RUN pip install ./mlops_sign_mnist --no-deps --no-cache-dir
 
 
-ENV WANDB_API_KEY=1b7ecebed8a240adafb51f6be5c3365569eda1fb
+# ENV WANDB_API_KEY=1b7ecebed8a240adafb51f6be5c3365569eda1fb
+# ENV WANDB_MODE=online
+ARG WANDB_API_KEY
+ENV WANDB_API_KEY=${WANDB_API_KEY}
 
 # not sure 
-ENV WANDB_MODE=online
 ENV HYDRA_FULL_ERROR=1
 
 

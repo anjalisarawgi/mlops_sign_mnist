@@ -1,14 +1,39 @@
+# steps:
+# - name: 'gcr.io/cloud-builders/docker'
+#   id: 'Build container image'
+#   args: [
+#     'build',
+#     '.',
+#     '-t',
+#     'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
+#     '-f',
+#     'mlops_sign_mnist/dockerfiles/cloud/train_model.dockerfile'
+#   ]
+# - name: 'gcr.io/cloud-builders/docker'
+#   id: 'Push container image'
+#   args: [
+#     'push',
+#     'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
+#   ]
+# images:
+#   - "europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier"
+# options:
+#   logging: CLOUD_LOGGING_ONLY
+
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   id: 'Build container image'
-  args: [
-    'build',
-    '.',
-    '-t',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
-    '-f',
-    'mlops_sign_mnist/dockerfiles/cloud/train_model.dockerfile'
-  ]
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      # Fetch secret from Secret Manager and export as environment variable
+      export WANDB_API_KEY=$(gcloud secrets versions access latest --secret="WANDB_API_KEY")
+      echo "WANDB_API_KEY=$WANDB_API_KEY"
+      # Build Docker image with secret as build argument
+      docker build . -t europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier \
+      -f mlops_sign_mnist/dockerfiles/cloud/train_model.dockerfile \
+      --build-arg WANDB_API_KEY=$WANDB_API_KEY
 - name: 'gcr.io/cloud-builders/docker'
   id: 'Push container image'
   args: [
