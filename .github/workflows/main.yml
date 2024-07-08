@@ -15,14 +15,9 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: 3.11
-
-    - name: Print current working directory
-      run: pwd
-
-    - name: List directory contents
-      run: ls -l mlops_sign_mnist
         
     - name: Install dependencies
+      working-directory: /home/runner/work/mlops_sign_mnist/mlops_sign_mnist/mlops_sign_mnist
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
