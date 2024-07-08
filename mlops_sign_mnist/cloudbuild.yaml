@@ -15,4 +15,5 @@ steps:
     'push',
     'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/sign-mnist-image:latest',
   ]
-
+options:
+  logging: CLOUD_LOGGING_ONLY
