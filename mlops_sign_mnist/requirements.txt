@@ -7,3 +7,5 @@ wandb
 kaggle
 hydra-core
 pytest
+fastapi
+uvicorn
