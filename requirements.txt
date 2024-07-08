@@ -1,9 +1,0 @@
-click
-matplotlib
-pandas
-tqdm
-torch
-wandb
-kaggle
-hydra-core
-pytest
