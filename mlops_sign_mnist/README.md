@@ -1,4 +1,4 @@
-# Sign Language MNIST Classification Using Convolutional Neural Networks
+# Sign Language MNIST Classification Using Convolutional Neural Networks (CNNS)
 
 ### Project Description
 The goal of our project is to use convolutional neural networks (CNNs) to accurately classify hand gestures from the Sign Language MNIST dataset. This dataset contains images of American Sign Language (ASL) letters, and our aim is to create a model that can recognize and classify these gestures with high accuracy.
