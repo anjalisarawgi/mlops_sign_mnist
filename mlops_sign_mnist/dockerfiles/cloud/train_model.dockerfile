@@ -22,5 +22,6 @@ ENV WANDB_API_KEY=1b7ecebed8a240adafb51f6be5c3365569eda1fb
 ENV WANDB_MODE=online
 ENV HYDRA_FULL_ERROR=1
 
-
-ENTRYPOINT ["python", "-u", "mlops_sign_mnist/mlops_sign_mnist/train_model.py"]
+EXPOSE $PORT
+CMD exec uvicorn mlops_sign_mnist.main:app --port $PORT --workers 1 main:app
+# ENTRYPOINT ["python", "-u", "mlops_sign_mnist/mlops_sign_mnist/train_model.py"]
