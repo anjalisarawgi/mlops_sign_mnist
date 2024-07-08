@@ -15,7 +15,7 @@ COPY mlops_sign_mnist/reports/figures mlops_sign_mnist/reports/figures/
 WORKDIR /
 RUN pip install -r mlops_sign_mnist/requirements.txt --no-cache-dir
 # RUN pip install . --no-deps --no-cache-dir
-RUN pip install --no-cache-dir .
+RUN pip install .
 
 
 ENV WANDB_API_KEY=1b7ecebed8a240adafb51f6be5c3365569eda1fb
