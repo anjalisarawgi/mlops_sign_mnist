@@ -5,7 +5,7 @@ steps:
     'build',
     '.',
     '-t',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/train-model',
     '-f',
     'mlops_sign_mnist/dockerfiles/cloud/train_model.dockerfile'
   ]
@@ -13,9 +13,26 @@ steps:
   id: 'Push container image'
   args: [
     'push',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/train-model',
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Build prediction container image'
+  args: [
+    'build',
+    '.',
+    '-t',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/predict-model',
+    '-f',
+    'mlops_sign_mnist/dockerfiles/cloud/predict_model.dockerfile'
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Push prediction container image'
+  args: [
+    'push',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/predict-model',
   ]
 images:
-  - "europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/classifier"
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/train-model"
+  - "europe-west1-docker.pkg.dev/$PROJECT_ID/mlops-sign-mnist-artifact/predict-model"
 options:
   logging: CLOUD_LOGGING_ONLY

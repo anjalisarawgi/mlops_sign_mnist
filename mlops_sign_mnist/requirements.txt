@@ -9,5 +9,7 @@ hydra-core
 pytest
 fastapi
 uvicorn
+dvc
+dvc-gdrive
+dvc-gs
 torchserve
-httpx
