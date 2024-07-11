@@ -5,9 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "mlops_sign_mnist"
 version = "0.0.1"
-description = "A short description of the project."
+description = "The goal of our project is to use convolutional neural networks (CNNs) to accurately classify hand gestures from the Sign Language MNIST dataset. This dataset contains images of American Sign Language (ASL) letters, and our aim is to create a model that can recognize and classify these gestures with high accuracy."
 authors = [
-  { name = "Your name (or your organization/company/team)", email = "your@email.com" },
+  { anjali = "Anjali Sarawgi" },
+  {ali = "Ali Najibpour Nashi"},
+  {anas = "Annas Namouchi"},
+  {jp = "John-Pierre Weideman"}
 ]
 
 readme = "README.md"
