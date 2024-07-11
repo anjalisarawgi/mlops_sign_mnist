@@ -1,7 +1,10 @@
 import os
+
 import pytest
 import torch
+
 from tests import _PATH_DATA
+
 
 @pytest.mark.skipif(not os.path.exists(_PATH_DATA), reason="Data files not found")
 def test_data():
@@ -20,6 +23,7 @@ def test_data():
     expected_labels = set(range(25)) - {9, 25}
     assert all(label in labels_train for label in expected_labels), "Not all train labels are represented"
     assert all(label in labels_test for label in expected_labels), "Not all test labels are represented"
+
 
 if __name__ == "__main__":
     test_data()

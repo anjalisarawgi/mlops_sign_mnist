@@ -5,6 +5,7 @@ import zipfile
 import pandas as pd
 import torch
 
+
 # NOTE: Kaggle API must be installed
 def download_and_process_data():
     subprocess.run(["kaggle", "datasets", "download", "-d", "datamunge/sign-language-mnist"])
@@ -37,7 +38,6 @@ def download_and_process_data():
     labels_train = torch.tensor(labels_train, dtype=torch.long)
     X_test = torch.tensor(X_test, dtype=torch.float32)
     labels_test = torch.tensor(labels_test, dtype=torch.long)
-    
 
     # save tensors
     torch.save(X_train, "data/processed/X_train.pt")
@@ -46,6 +46,7 @@ def download_and_process_data():
     torch.save(labels_test, "data/processed/labels_test.pt")
 
     print("Data saved successfully!")
+
 
 if __name__ == "__main__":
     download_and_process_data()

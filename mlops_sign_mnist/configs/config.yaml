@@ -8,4 +8,4 @@ hydra:
 hyperparameters:
   batch_size: 32
   learning_rate: 1e-3
-  epochs: 3
+  epochs: 5

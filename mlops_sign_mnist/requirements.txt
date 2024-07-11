@@ -13,3 +13,5 @@ dvc
 dvc-gdrive
 dvc-gs
 torchserve
+httpx
+ruff

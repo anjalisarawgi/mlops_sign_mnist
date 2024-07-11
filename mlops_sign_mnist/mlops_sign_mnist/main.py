@@ -3,7 +3,7 @@ import torch
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from mlops_sign_mnist.models.model import SignLanguageMNISTModel
+from models.model import SignLanguageMNISTModel
 
 ALPHABET = [
     "A",
@@ -36,7 +36,7 @@ ALPHABET = [
 app = FastAPI()
 
 # load model
-model_checkpoint = "models/sign_language_mnist_model.pth"
+model_checkpoint = "../models/sign_language_mnist_model.pth"
 model = SignLanguageMNISTModel()
 model.load_state_dict(torch.load(model_checkpoint))
 
@@ -47,8 +47,6 @@ class tensor(BaseModel):
 
 
 # Endpoint that given tensor image returns the prediction
-
-
 @app.post("/predict")
 def predict(data: tensor):
     image = torch.tensor(data.image)
