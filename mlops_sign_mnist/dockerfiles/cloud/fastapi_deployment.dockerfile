@@ -11,7 +11,7 @@ COPY models/sign_language_mnist_model.pth /app/models/sign_language_mnist_model.
 COPY mlops_sign_mnist/models/model.py /app/mlops_sign_mnist/models/model.py
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r ../requirements_deployment.txt
+RUN pip install --no-cache-dir --timeout=300 -r ../requirements_deployment.txt
 
 
 EXPOSE 8080
