@@ -83,6 +83,7 @@ curriculum in this course. Therefore, we do not expect at all that you have chec
 
 ### Week 3
 
+**We don't have enough resources to be able to utilize GPU's and thus do not implement the below steps**
 * [ ] Check how robust your model is towards data drifting
 * [ ] Setup monitoring for the system telemetry of your deployed model
 * [ ] Setup monitoring for the performance of your deployed model
