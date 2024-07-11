@@ -114,7 +114,10 @@ curriculum in this course. Therefore, we do not expect at all that you have chec
 >
 > Example:
 >
-> *sXXXXXX, sXXXXXX, sXXXXXX*
+> Anjali Sarawgi            12690415
+> Ali Najibpour Nashi       12644070
+> Annas Namouchi            12845130
+> John-Pierre Weideman      12696407
 >
 > Answer:
 
@@ -352,7 +355,13 @@ Answer:
 > *here: <weblink>*
 >
 > Answer:
-
+> We have organized our continuous integration (CI) setup using GitHub Actions
+> Our CI setup includes:
+> 
+> 1. **Unit Testing:** We run unit tests using `pytest` to ensure that our code behaves as expected. This is done automatically on every push and pull request to the repository.
+> 2. **PEP8 compliance:** We use `flake8` to enforce PEP8 compliance and catch syntax errors or style issues early.
+> 3. **Testing Multiple Python Versions:** Our CI setup includes testing across multiple Python versions (e.g., 3.7, 3.8, 3.9) to ensure compatibility and identify any version-specific issues.
+> 4. **Caching:** We use caching to speed up the CI process by storing dependencies between builds. This reduces the time taken to install dependencies on each run.
 --- question 11 fill here ---
 
 ## Running code and tracking experiments
@@ -371,7 +380,20 @@ Answer:
 > *We used a simple argparser, that worked in the following way: Python  my_script.py --lr 1e-3 --batch_size 25*
 >
 > Answer:
-
+> We configured our experiments using config files with Hydra. This allowed us to manage and modify hyperparameters.
+> Here is an example of how we set up and ran an experiment:
+> hydra:
+>  run:
+>    dir: .
+>  output_subdir: null
+>  job_logging:
+>    level: INFO
+>
+> hyperparameters:
+>  batch_size: 32
+>  learning_rate: 1e-3
+>  epochs: 3
+> 
 --- question 12 fill here ---
 
 ### Question 13
@@ -386,7 +408,17 @@ Answer:
 > *one would have to do ...*
 >
 > Answer:
-
+> We made use of config files, version control, experiment logging, data versioning, and Docker to ensure reproducibility of our experiments. Whenever an experiment is run, the following happens:
+> 
+> To reproduce an experiment, one would need to:
+> 
+> 1. Checkout the correct Git commit for the code and configuration.
+> 2. Use DVC to pull the corresponding data version.
+> 3. Build and run the Docker container to ensure the environment is consistent.
+> 4. Run the experiment script with Hydra to apply the saved configuration.
+> 
+> This is how we guarantee reproducibility.
+"""
 --- question 13 fill here ---
 
 ### Question 14
@@ -404,6 +436,7 @@ Answer:
 >
 > Answer:
 
+
 --- question 14 fill here ---
 
 ### Question 15
@@ -418,7 +451,13 @@ Answer:
 > *training docker image: `docker run trainer:latest lr=1e-3 batch_size=64`. Link to docker file: <weblink>*
 >
 > Answer:
+> For our project, we developed Docker images for training and prediciton of our model.
+> To run the training Docker image, we used the following command:
+> **docker run trainer:latest --config config.yaml**
+> 
+> Here is a link to one of our Docker files: mlops_sign_mnist/dockerfiles/predict_model.dockerfile
 
+"""
 --- question 15 fill here ---
 
 ### Question 16
@@ -433,7 +472,15 @@ Answer:
 > *run of our main code at some point that showed ...*
 >
 > Answer:
-
+> When running into bugs while trying to run our experiments, we performed debugging using a combination of logging, interactive debugging tools, and unit tests.
+> 1. Logging: We used  logging to track the flow of execution and identify where the code was failing. By examining the logs, we could pinpoint the source of errors.
+> 2. Interactive Debugging: The VSCode IDE which we used allowed us to set breakpoints and step through the code interactively to inspect variables and understand the behavior of the code.
+> 3. Unit Tests: We used unit tests to help us verify that individual components of our code were functioning correctly.
+> 
+> We also profiled our code to identify performance bottlenecks. Using tools like `cProfile` and `line_profiler`, we analyzed the runtime of different parts of our code. This helped us optimize critical sections to improve overall performance.
+> 
+> While we strive for high-quality code, we recognize that it can always be improved. Profiling and continuous monitoring allow us to iteratively enhance both the functionality and efficiency of our codebase.
+"""
 --- question 16 fill here ---
 
 ## Working in the cloud
