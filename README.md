@@ -1,9 +1,6 @@
----
-layout: default
-nav_exclude: true
----
 
-# Exam template for 02476 Machine Learning Operations
+
+# Exam template Machine Learning Operations
 
 This is the report template for the exam. Please only remove the text formatted as with three dashes in front and behind
 like:
@@ -123,15 +120,15 @@ curriculum in this course. Therefore, we do not expect at all that you have chec
 
 Answer:
 
-> 1.    PyTorch: Provided tools for building and training our deep learning models, including nn.Module for defining neural network architecture and torch.optim for optimization algorithms.
-> 2.    Conda: Managed dependencies and environments.
-> 3.    Cookiecutter: Helped us set up our initial project structure quickly with best practices.
+> 1.  PyTorch: Provided tools for building and training our deep learning models, including nn.Module for defining neural network architecture and torch.optim for optimization algorithms.
+> 2.  Conda: Managed dependencies and environments.
+> 3.  Cookiecutter: Helped us set up our initial project structure quickly with best practices.
 > 4.	Hydra: Used for configuration management, to improve workflow and reproducibility.
 > 5.	WandB: Experiment tracking and visualization, crucial for monitoring training progress and hyperparameter tuning.
 > 6.	Docker: Ensured consistent environments across development, testing, and production by containerizing our application.
 > 7.	Pytest: Used for writing and running tests, ensuring code reliability and correctness.
 > 8.	GitHub Actions: Automated our CI/CD pipeline, running tests and deploying applications on code commits.
-> 9.    PEP8: Ensured our code adhered to Python’s style guidelines.
+> 9.  PEP8: Ensured our code adhered to Python’s style guidelines.
 > 10.	Cloud Services: Used cloud infrastructure for scalable and efficient model training and deployment.
 > 11.	FastAPI: Provided a way to build and deploy our API for model inference.
 
@@ -252,7 +249,7 @@ Answer:
 >
 > Answer:
 > 
-> In total we implemented **X** tests
+> In total we implemented 2 tests
 > 
 > test_api.py:
 > 
@@ -264,17 +261,13 @@ Answer:
 >   
 > test_data.py:
 > 
-> - Data Processing Tests: Verifies correct downloading, preprocessing, and saving of raw and processed data files.
->   
-> - Data Integrity: Ensures data transformations are performed accurately.
+> - Data Processing Tests: Verifies if data files exists, we have the correct number of samples, and if all our labels are present.
+
 >   
 > test_model.py:
 > 
-> - Model Training Tests: Confirms that the model trains correctly and the trained model is saved.
->   
-> - Prediction Accuracy: Ensures the model makes accurate predictions with expected outputs.
->   
-> - Integration Tests: Verifies the end-to-end workflow from data processing to model prediction.
+> - Model Tests: we test if the model archiutecture runs smoothly given a dummy input.
+> 
 
 
 ### Question 8
@@ -284,9 +277,7 @@ Answer:
 > 
 > Answer:
 > 
-> Code Coverage Percentage = (Number of lines of code executed)/(Total Number of lines of code in an application) * 100.
-> 
-> The total code coverage of our code is **X%**, which includes all our source code. We are far from 100% coverage, and even if we achieved 100%, it would not guarantee that the code is error-free.
+> The total code coverage of our code is 59%, which includes all our source code. We are far from 100% coverage, and even if we achieved 100%, it would not guarantee that the code is error-free.
 > 
 > Code coverage measures how much of the code is executed during testing, but it does not assess the quality of the tests themselves.
 > 
@@ -344,11 +335,11 @@ Answer:
 > 
 > Our CI setup includes:
 > 
-> 1. **Unit Testing:** We run unit tests using `pytest` to ensure that our code behaves as expected. This is done automatically on every push and pull request to the repository.
+> 1. **Unit Testing:** We run unit tests using `pytest` to ensure that our code behaves as expected. This is done automatically on every push to the repository with help from GitHub Actions.
 >    
-> 2. **PEP8 compliance:** We use `flake8` to enforce PEP8 compliance and catch syntax errors or style issues early.
+> 2. **PEP8 compliance:** We use `ruff` to enforce PEP8 compliance and catch syntax errors or style issues.
 >  
-> 3. **Testing Multiple Python Versions:** Our CI setup includes testing across multiple Python versions (e.g., 3.7, 3.8, 3.9) to ensure compatibility and identify any version-specific issues.
+> 3. **Testing Multiple Python Versions:** Our CI setup includes testing across multiple Python versions 3.9, 3.10 and 3.11 to ensure compatibility and identify any version-specific issues.
 >    
 > 4. **Caching:** We use caching to speed up the CI process by storing dependencies between builds. This reduces the time taken to install dependencies on each run.
 
@@ -368,20 +359,20 @@ Answer:
 > We configured our experiments using config files with Hydra. This allowed us to manage and modify hyperparameters.
 > 
 > Here is an example of how we set up and ran an experiment:
-> 
-> hydra:
->  run:
->    dir: .
->  output_subdir: null
->  job_logging:
->    level: INFO
->
-> hyperparameters:
->  batch_size: 32
->  learning_rate: 1e-3
->  epochs: 3
-> 
 
+```txt
+ hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job_logging:
+    level: INFO
+
+ hyperparameters:
+  batch_size: 32
+  learning_rate: 1e-3
+  epochs: 3
+ ```
 
 ### Question 13
 
@@ -442,7 +433,9 @@ Answer:
 > To run the training Docker image, we used the following command:
 > **docker run trainer:latest --config config.yaml**
 > 
-> Here is a link to one of our Docker files: mlops_sign_mnist/dockerfiles/predict_model.dockerfile
+> Here is a link to our Docker files:
+> [mlops_sign_mnist/dockerfiles/predict_model.dockerfile](https://github.com/anjalisarawgi/mlops_sign_mnist/blob/main/mlops_sign_mnist/dockerfiles/predict_model.dockerfile)
+> [mlops_sign_mnist/dockerfiles/train_model.dockerfile](https://github.com/anjalisarawgi/mlops_sign_mnist/blob/main/mlops_sign_mnist/dockerfiles/train_model.dockerfile)
 
 """
 --- question 15 fill here ---
@@ -461,10 +454,11 @@ Answer:
 > Answer:
 > When running into bugs while trying to run our experiments, we performed debugging using a combination of logging, interactive debugging tools, and unit tests.
 > 1. Logging: We used  logging to track the flow of execution and identify where the code was failing. By examining the logs, we could pinpoint the source of errors.
-> 2. Interactive Debugging: The VSCode IDE which we used allowed us to set breakpoints and step through the code interactively to inspect variables and understand the behavior of the code.
-> 3. Unit Tests: We used unit tests to help us verify that individual components of our code were functioning correctly.
-> 
-> We also profiled our code to identify performance bottlenecks. Using tools like `cProfile` and `line_profiler`, we analyzed the runtime of different parts of our code.
+> 2. Interactive Debugging: The VSCode IDE which allowed us to use debugger.
+> 3. Print statements: We also used print statements for debugging
+> 4. Unit Tests: We used unit tests to help us verify that individual components of our code were functioning correctly.
+>
+> We think our code is perfect
 
 --- question 16 fill here ---
 
@@ -484,9 +478,12 @@ Answer:
 > Answer:
 > In our project, we used the following Google Cloud Platform (GCP) services:
 > Google Cloud Storage: Used for storing and managing our data files.
-> Google Kubernetes Engine: Utilized for deploying and managing containerized applications. GKE allowed us to run our Docker containers in a managed Kubernetes environment, ensuring scalability and reliability.
 > Google Cloud Functions: Used for deploying serverless functions.
-> Google AI Platform: Used for training and deploying our model as an API.
+> Google Cloud Run: Deployed our containerized applications in a fully managed environment
+> Google Cloud Build: Automated the building and pushing of our Docker images, ensuring that our containers were built correctly every time we pushed changes to github.
+> Google Compute Engine: Provided virtual machines for running various workloads.
+> Google Cloud Buckets: Part of GCS, used for organizing and storing our data files and model weights. 
+>
 
 --- question 17 fill here ---
 
@@ -504,15 +501,13 @@ Answer:
 > Answer:
 > We used the Google Compute Engine to run our machine learning training and inference workloads. Compute Engine provided us with virtual machines (VMs) for our computational tasks.
 > 
-> We used instances with the following hardware configurations:
-> - **n1-standard-4:** This type of VM comes with 4 vCPUs and 15 GB of memory, suitable for moderate workloads and data preprocessing tasks.
-> - **n1-highmem-8:** This VM type has 8 vCPUs and 52 GB of memory, ideal for training large machine learning models that require substantial memory.
-> - **n1-highcpu-16:** This instance provides 16 vCPUs and 14.4 GB of memory, used for compute-intensive tasks and parallel processing.
-> 
-> We started these instances using custom containers to ensure consistency across different environments. Each container was built with the necessary dependencies and configurations required for our specific tasks. with these custom containers, we could deploy our code and run experiments in a controlled and reproducible environment.
-> 
-> Over
---- question 18 fill here ---
+> We used with the following instance:
+> - **n1-standard-1:**
+> - **region: europe-west1-b**
+> We started this instance using a ready to go Pytorch image (pytorch-latest-cpu-v20240627) to ensure consistency across different environments.
+> We cloned a github repository in this instance, set up the environment and ran our training model.
+> Our VM is **mlops-sign-mnist-instance**
+
 
 ### Question 19
 
@@ -554,9 +549,9 @@ Answer:
 > *`curl -X POST -F "file=@file.json"<weburl>`*
 >
 > Answer:
-> We managed to deploy our model in the cloud using Google AI Platform. For deployment, we wrapped our model into a Flask application, which served as a REST API for inference.
-> Initially, we served the model locally to ensure that the deployment process worked correctly. We used Docker to containerize the Flask application, which allowed us to maintain consistency between local and cloud environments.
-> After successful local testing, we deployed the Docker container to Google AI Platform.
+> We managed to deploy our model locally and in the cloud. For deployment, we used a Fast API application.
+> Initially, we served the model locally to ensure that the deployment process worked correctly. We used Docker to containerize the application.
+> After local testing, we deployed the Docker container to Cloud.
 > To invoke the deployed service, users can send a POST request to the API endpoint with the input data. Here is an example of how to call the service:
 > 
 > curl -X POST -H "Content-Type: application/json" -d '{"data": [1, 2, 3, 4]}' <weburl>
@@ -578,15 +573,7 @@ Answer:
 >
 > Answer:
 > 
-> Yes, we managed to implement monitoring of our deployed model. We used Google Cloud Monitoring and Logging services to track the performance and health of our model.
-> Our monitoring setup included:
-> Logging: We integrated Google Cloud Logging to capture detailed logs from our Flask application. These logs include information on API requests, errors, and response times.
-> Metrics: We used Google Cloud Monitoring to track metrics such as request count, latency, error rates, and CPU/memory usage of our model's deployment.
-> Alerts: We set up alerts to notify us of any unusual behavior or performance degradation. For example, if the error rate exceeds a certain threshold, we receive an alert via email or SMS.
-
-
-># Answer 2: Did Not Manage to Implement Monitoring
-> We did not manage to implement monitoring. We would like to have monitoring implemented such that over time we could measure performance metrics and detect any anomalies in our model's behavior.
+> We did not implement monitoring. We would could implemented monitoring so that over time we could measure performance metrics and detect any anomalies in our model's behavior.
 > Monitoring would help us track the model's performance, such as response times, error rates, and resource usage. This information would inform us about the health and efficiency of our application.
 > Additionally, monitoring could provide insights into data drift, where the input data distribution changes over time, potentially affecting model accuracy. By implementing monitoring, we could proactively address performance issues and ensure the longevity and reliability of our deployed model.
 >
@@ -603,8 +590,7 @@ Answer:
 > *costing the most was ... due to ...*
 >
 > Answer:
-> In total we used... credits during development. The service costing the most was ... due to ..
---- question 24 fill here ---
+> In total we used $2.86 of credits during development. The service costing the most was Compute Engine due to computational power required to handle large datasets.
 
 ## Overall discussion of project
 
@@ -624,22 +610,22 @@ Answer:
 > *Whenever we commit code and push to github, it auto triggers ... and ... . From there the diagram shows ...*
 >
 > Answer:
-> First we setup our project locally. We use tools such as Weights & Biases (W&B) for experiment tracking and Hydra for configuration management.
+> First we setup our project locally. We use tools such as cookiecutter, Pytorch, Conda, Git and DVC
 > The overall steps:
 > Local Machine:
-> - Experiment Configuration and Submission: Experiments are configured using Hydra and tracked using W&B. This local setup allows for hyperparameter sweeps and detailed experiment tracking.
-> GitHub (Version Control):
-> - Source Code Management: We commit and push our changes to a shared GitHub repository. This repository acts as the central source of truth for the project's codebase.
-> AI Platform:
-> - Model Training: The best-performing models are submitted to Google AI Platform for further training. This managed service provides scalable resources for intensive training tasks.
+> - Experiment Configuration and Submission: Experiments are configured using Hydra and tracked using W&B. This local setup allows us to use hyperparameters from config files.
+> - GitHub (Version Control):
+> - Source Code Management: We commit and push our changes to a shared GitHub repository.
+> - We run our project locally using Docker.
+> Google Cloud:
+> - Model Training: The data and model weights are pushed to Cloud for further training. We also use Compute Engine to train our model on cloud.
 > GitHub Actions (CI/CD):
-> - Continuous Integration and Testing: Upon code submission, GitHub Actions is triggered to run automated tests, including unit tests, linting (flake8), type checking (mypy), and code coverage analysis (Codecov). This ensures code quality and functionality before deployment.
+> - Continuous Integration and Testing: Upon code submission, GitHub Actions is triggered to run automated tests, including unit tests, linting (ruff).              
 > Google Cloud Platform (GCP):
 > - Docker Image Build: Changes pushed to GitHub trigger a build in GCP, creating a new Docker image with the latest code. This image is stored in Google Container Registry.
-> Docker:
-> - Deployment and Scaling: Docker is used to deploy the application consistently across different environments. Users can pull the latest Docker image from the container registry to run the application.
+> - Deployment: We create a docker image and push it to CLoud for our Fast API application. We then run the deployment on cloud.
 > User Interaction:
-> - Code and Image Access: Users can clone the source code from GitHub and pull the newest Docker image to ensure they are working with the latest version of the application.
+> - Code and Image Access: Users can clone the source code from GitHub and pull the newest Docker image to ensure they are working with the latest version of the application. Additionally they can also use our API  to make predictions.
 
 --- question 25 fill here ---
 
@@ -682,6 +668,5 @@ Answer:
 > Answer:
 > John-Pierre Weideman was in charge of setting up the Cookiecutter project structure and developing the Docker containers for training our applications. He also worked on writing the initial data processing scripts and setting up version control with GitHub and DVC.
 > Ali Najibpour Nashi focused on creating the training scripts and setting up continuous integration with GitHub Actions. He also implementing the initial unit tests and ensured that our code is PEP8.
-> Anjali Sarawgi trained our models in the cloud using Google AI Platform and managed the deployment process. She also handled the integration of Weights & Biases for experiment tracking and monitoring.
-> Annas Namouchi was responsible for developing and deploying the API for model inference. He also worked on setting up monitoring and logging for the deployed model and optimized the performance of the API.
---- question 27 fill here ---
+> Anjali Sarawgi trained our models in the cloud using Google Cloud and managed the deployment process. She also handled the integration of Weights & Biases for experiment tracking and monitoring.
+> Annas Namouchi was responsible for developing and deploying the API for model inference. Additionally, he also worked on profiling and setting up config files using Hydra.
