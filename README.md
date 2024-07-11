@@ -547,10 +547,10 @@ docker run trainer:latest --config config.yaml
 > After local testing, we deployed the Docker container to Cloud.
 > 
 > To invoke the deployed service, users can send a POST request to the API endpoint with the input data. Here is an example of how to call the service:
->
+> 
 ```txt
 curl -X 'POST' \
-  'https://mlops-jaaa-sign-mnist-avhrnkhzfq-ew.a.run.app/predict' \
+  'https://sign-mnist-mlops-avhrnkhzfq-ew.a.run.app/predict' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -558,6 +558,8 @@ curl -X 'POST' \
 ```
 > 
 > This allows users to easily interact with our model.
+> 
+> The link to our API can also be found at: https://sign-mnist-mlops-avhrnkhzfq-ew.a.run.app/docs#/default/predict_predict_post 
 
 
 ### Question 23
