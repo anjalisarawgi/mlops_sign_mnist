@@ -154,6 +154,9 @@ Answer:
 > *complete copy of our development environment, one would have to run the following commands*
 >
 > Answer:
+> We used a virtual environment to isolate the project's dependencies from the system-wide Python packages.
+> We kept track of all the packages and their versions in a requirements.txt file. This file lists all the dependencies required by the project, and a new team member will have to install these.
+> We also created a Dockerfile to containerize the application. This ensures that the project runs in the same environment regardless of where it is deployed. The Dockerfile includes all the necessary steps to set up the environment, including installing dependencies. Thus instead of using the requirements.txt file for the environment they can instead build and run the Docker container.
 
 --- question 4 fill here ---
 
@@ -170,7 +173,57 @@ Answer:
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+
+>├── Makefile             <- Makefile with convenience commands like `make data` or `make train`
+>├── README.md            <- The top-level README for developers using this project.
+>├── data
+>│   ├── processed        <- The final, canonical data sets for modeling.
+>│   └── raw              <- The original, immutable data dump.
+>│
+>├── docs                 <- Did not fill
+>│   │
+>│   ├── index.md         
+>│   │
+>│   ├── mkdocs.yml       
+>│   │
+>│   └── source/         
+>│
+>├── models               <- .pth files of the model weigths that we obtain from training
+>│
+>├── notebooks            <- Jupyter notebooks. We didn't fill this folder
+>│
+>├── pyproject.toml       <- Project configuration file
+>│
+>├── reports              
+>│   └── figures          <- Generated graphics and figures from our training and prediction results
+>│
+>├── requirements.txt     <- The requirements file for reproducing the analysis environment
+>|
+>├── requirements_dev.txt <- The requirements file for reproducing the analysis environment
+>│
+>├── tests                <- Test files
+>│
+>├── mlops_sign_mnist  <- Source code for use in this project.
+>│   │
+>│   ├── __init__.py      <- Makes folder a Python module
+>│   │
+>│   ├── data             <- Scripts to download or generate data
+>│   │   ├── __init__.py
+>│   │   └── make_dataset.py
+>│   │
+>│   ├── models           <- model implementations
+>│   │   ├── __init__.py
+>│   │   ├── model.py     <- profiling, wandb, autopep8, typing, docker incomplete, dvc check
+>│   │   ├── scripted_model.pt     <- api testing and attempted local deployment 
+>│   │
+>│   ├── visualization    <- Scripts to create exploratory and results oriented visualizations. We didn#'t fill this folder
+>│   │   ├── __init__.py
+>│   │   └── visualize.py
+>│   ├── train_model.py   <- script for training the model
+>│   └── predict_model.py <- script for predicting from a model
+>│
+>└── LICENSE              <- Open-source license if one is chosen. We didn't chooose one
+
 
 ### Question 6
 
@@ -180,7 +233,15 @@ Answer:
 > Recommended answer length: 50-100 words.
 >
 > Answer:
-
+> PEP8 Compliance: We ensured that all our Python code adheres to the PEP8 style guide, which includes guidelines for code layout, naming conventions etc.
+>In big projects, this is important because it ensures:
+> Maintainability: Consistent code is easier to read, understand, and modify.
+> Collaboration: Standardized code facilitates teamwork and reduces onboarding time for new members.
+> Error Prevention: Style guides and type hints help catch errors early.
+> Documentation: Clear documentation aids in understanding and future maintenance.
+> Automation: CI/CD pipelines ensure consistent code quality and catch issues early.
+> Scalability: High-quality code is easier to scale, refactor, and extend with new features.
+> 
 --- question 6 fill here ---
 
 ## Version control
@@ -199,7 +260,20 @@ Answer:
 > *application but also ... .*
 >
 > Answer:
+> In total we implemented **X** tests
+> test_api.py:
+> - Tests API Endpoints: Ensures endpoints are accessibl.
+> - Validates Responses: Checks that API responses have the correct data structure and content.
+> - Handles Errors: Verifies API behavior for invalid inputs and missing parameters.
 
+> test_data.py:
+> - Data Processing Tests: Verifies correct downloading, preprocessing, and saving of raw and processed data files.
+> - Data Integrity: Ensures data transformations are performed accurately.
+
+> test_model.py:
+> - Model Training Tests: Confirms that the model trains correctly and the trained model is saved.
+> - Prediction Accuracy: Ensures the model makes accurate predictions with expected outputs.
+> - Integration Tests: Verifies the end-to-end workflow from data processing to model prediction.
 --- question 7 fill here ---
 
 ### Question 8
@@ -214,6 +288,11 @@ Answer:
 > *code and even if we were then...*
 >
 > Answer:
+> Code Coverage Percentage = (Number of lines of code executed)/(Total Number of lines of code in an application) * 100.
+> The total code coverage of our code is **X%**, which includes all our source code. We are far from 100% coverage, and even if we achieved 100%, it would not guarantee that the code is error-free.
+> Code coverage measures how much of the code is executed during testing, but it does not assess the quality of the tests themselves.
+> There can still be issues that are not caught by tests.
+> Code coverage also does not account for the correctness of the output or the handling of unexpected inputs.
 
 --- question 8 fill here ---
 
@@ -229,6 +308,12 @@ Answer:
 > *addition to the main branch. To merge code we ...*
 >
 > Answer:
+>
+> We made use of both branches and pull requests in our project. In our group, members had a branch that they worked on in addition to the main branch. 
+> Each feature or bug fix was developed in a separate branch, which allowed us to work on multiple parts of the project individually, but simultaneously without interfering with the main codebase.
+> To merge code, we would create a pull request from our individual feature branch to the main branch. This triggered a review process where other team members could review the changes, run tests, and provide feedback.
+> Only after the PR was reviewed and approved, the changes were merged into the main branch. 
+> Using branches and PRs also allowed us to maintain a clean and stable main branch. 
 
 --- question 9 fill here ---
 
@@ -244,6 +329,12 @@ Answer:
 > *pipeline*
 >
 > Answer:
+> We did used DVC for managing data in our project.
+> It allowed us to track changes to our datasets, ensuring that we could reproduce experiments and results. 
+> DVC enables us to maintain different versions of our datasets, making it easy to switch between different stages of data processing and analysis.
+> With DVC, we could share data easily, without having to manually manage large files or deal with inconsistencies.
+> DVC's integration with cloud also helped us keep our data accessible.
+"""
 
 --- question 10 fill here ---
 
