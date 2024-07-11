@@ -409,13 +409,9 @@ Answer:
 > **inspiration from [this figure](figures/wandb.png). Explain what metrics you are tracking and why they are**
 > **important.**
 >
-> Recommended answer length: 200-300 words + 1 to 3 screenshots.
->
-> Example:
-> *As seen in the first image when have tracked ... and ... which both inform us about ... in our experiments.*
-> *As seen in the second image we are also tracking ... and ...*
->
 > Answer:
+
+![WandB](figures/wandb.jpeg)
 
 
 ### Question 15
@@ -514,6 +510,9 @@ docker run trainer:latest --config config.yaml
 >
 > Answer:
 
+![bucket1](figures/bucket_1.jpeg)
+
+
 
 ### Question 20
 
@@ -522,6 +521,7 @@ docker run trainer:latest --config config.yaml
 >
 > Answer:
 
+![registry](figures/registry_1.jpeg)
 
 ### Question 21
 
@@ -530,6 +530,7 @@ docker run trainer:latest --config config.yaml
 >
 > Answer:
 
+![cloudbuild](figures/cloud_build.jpeg)
 
 ### Question 22
 
@@ -620,6 +621,7 @@ curl -X 'POST' \
 > 
 > - Code and Image Access: Users can clone the source code from GitHub and pull the newest Docker image to ensure they are working with the latest version of the application. Additionally they can also use our API  to make predictions.
 
+![pipeline](figures/pipeline.jpeg)
 
 
 ### Question 26
