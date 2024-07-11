@@ -418,8 +418,6 @@ Answer:
 > Answer:
 
 
---- question 14 fill here ---
-
 ### Question 15
 
 > **Docker is an important tool for creating containerized applications. Explain how you used docker in your**
@@ -516,7 +514,6 @@ docker run trainer:latest --config config.yaml
 >
 > Answer:
 
---- question 19 fill here ---
 
 ### Question 20
 
@@ -525,7 +522,6 @@ docker run trainer:latest --config config.yaml
 >
 > Answer:
 
---- question 20 fill here ---
 
 ### Question 21
 
@@ -534,7 +530,6 @@ docker run trainer:latest --config config.yaml
 >
 > Answer:
 
---- question 21 fill here ---
 
 ### Question 22
 
@@ -656,10 +651,10 @@ curl -X 'POST' \
 >
 > Answer:
 > 
-> -John-Pierre Weideman was in charge of setting up the Cookiecutter project structure and developing the Docker containers for training our applications. He also worked on writing the initial data processing scripts and setting up version control with GitHub and DVC.
+> - John-Pierre Weideman was in charge of setting up the Cookiecutter project structure and developing the Docker containers for training our applications. He also worked on writing the initial data processing scripts and setting up version control with GitHub and DVC.
 > 
-> -Ali Najibpour Nashi focused on creating the training scripts and setting up continuous integration with GitHub Actions. He also implementing the initial unit tests and ensured that our code is PEP8.
+> - Ali Najibpour Nashi focused on creating the training scripts and setting up continuous integration with GitHub Actions. He also implementing the initial unit tests and ensured that our code is PEP8.
 > 
-> -Anjali Sarawgi trained our models in the cloud using Google Cloud and managed the deployment process. She also handled the integration of Weights & Biases for experiment tracking and monitoring.
+> - Anjali Sarawgi trained our models in the cloud using Google Cloud and managed the deployment process. She also handled the integration of Weights & Biases for experiment tracking and monitoring.
 > 
-> -Annas Namouchi was responsible for developing and deploying the API for model inference. Additionally, he also worked on profiling and setting up config files using Hydra.
+> - Annas Namouchi was responsible for developing and deploying the API for model inference. Additionally, he also worked on profiling and setting up config files using Hydra.
