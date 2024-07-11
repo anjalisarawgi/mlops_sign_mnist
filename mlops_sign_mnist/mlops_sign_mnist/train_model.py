@@ -45,10 +45,11 @@ def profile_single_batch(model, X_batch, y_batch, optimizer, criterion):
         optimizer.step()
         prof.step()  # Mark the end of an iteration
 
-    # Print profiling results for the batch
+    # # Print profiling results for the batch
     print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
     prof.export_chrome_trace("log/trace.json")
     return loss.item()
+
 
 def evaluate_model(model, data_loader, criterion):
     model.eval()
@@ -92,12 +93,14 @@ def main(cfg):
 
     train_losses = []
     test_accuracies = []
+    profiled = False  # Flag to indicate profiling has not been done
     for epoch in range(epochs):
         model.train()
         train_loss = 0.0
         for i, (X_batch, y_batch) in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}/{epochs}")):
-            if i == 0:  # Profile the first batch iteration of each epoch
+            if not profiled:  # Profile only the first batch of the first epoch
                 loss = profile_single_batch(model, X_batch, y_batch, optimizer, criterion)
+                profiled = True
             else:
                 X_batch, y_batch = X_batch.to(DEVICE), y_batch.to(DEVICE)
                 optimizer.zero_grad()
